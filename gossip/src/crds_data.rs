@@ -424,7 +424,7 @@ impl Sanitize for LegacyVersion {
 #[derive(Serialize, Deserialize, Clone, Debug, PartialEq, Eq)]
 pub(crate) struct Version {
     from: Pubkey,
-    wallclock: u64,
+    pub wallclock: u64,
     version: solana_version::LegacyVersion2,
 }
 
@@ -440,7 +440,7 @@ impl Sanitize for Version {
 #[derive(Clone, Debug, PartialEq, Eq, Deserialize, Serialize)]
 pub(crate) struct NodeInstance {
     from: Pubkey,
-    pub wallclock: u64,
+    wallclock: u64,
     timestamp: u64, // Timestamp when the instance was created.
     token: u64,     // Randomly generated value at node instantiation.
 }
