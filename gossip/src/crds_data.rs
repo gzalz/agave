@@ -138,7 +138,7 @@ impl CrdsData {
         }
     }
 
-    pub(crate) fn wallclock(&self) -> u64 {
+    pub fn wallclock(&self) -> u64 {
         match self {
             CrdsData::LegacyContactInfo(contact_info) => contact_info.wallclock(),
             CrdsData::Vote(_, vote) => vote.wallclock,
