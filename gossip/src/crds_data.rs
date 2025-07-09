@@ -406,7 +406,7 @@ impl<'de> Deserialize<'de> for Vote {
 
 #[cfg_attr(feature = "frozen-abi", derive(AbiExample))]
 #[derive(Serialize, Deserialize, Clone, Debug, PartialEq, Eq)]
-pub(crate) struct LegacyVersion {
+pub struct LegacyVersion {
     from: Pubkey,
     pub wallclock: u64,
     version: solana_version::LegacyVersion1,
@@ -422,7 +422,7 @@ impl Sanitize for LegacyVersion {
 
 #[cfg_attr(feature = "frozen-abi", derive(AbiExample))]
 #[derive(Serialize, Deserialize, Clone, Debug, PartialEq, Eq)]
-pub(crate) struct Version {
+pub struct Version {
     from: Pubkey,
     pub wallclock: u64,
     version: solana_version::LegacyVersion2,
