@@ -408,7 +408,7 @@ impl<'de> Deserialize<'de> for Vote {
 #[derive(Serialize, Deserialize, Clone, Debug, PartialEq, Eq)]
 pub(crate) struct LegacyVersion {
     from: Pubkey,
-    wallclock: u64,
+    pub wallclock: u64,
     version: solana_version::LegacyVersion1,
 }
 
@@ -440,7 +440,7 @@ impl Sanitize for Version {
 #[derive(Clone, Debug, PartialEq, Eq, Deserialize, Serialize)]
 pub(crate) struct NodeInstance {
     from: Pubkey,
-    wallclock: u64,
+    pub wallclock: u64,
     timestamp: u64, // Timestamp when the instance was created.
     token: u64,     // Randomly generated value at node instantiation.
 }
