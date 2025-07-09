@@ -34,7 +34,7 @@ pub(crate) struct LegacyContactInfo {
     /// address to send repair requests to
     serve_repair: SocketAddr,
     /// latest wallclock picked
-    wallclock: u64,
+    pub wallclock: u64,
     /// node shred version
     shred_version: u16,
 }
