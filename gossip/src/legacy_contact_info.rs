@@ -87,7 +87,6 @@ macro_rules! socketaddr_any {
     };
 }
 
-#[cfg(test)]
 impl Default for LegacyContactInfo {
     fn default() -> Self {
         LegacyContactInfo {

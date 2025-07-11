@@ -447,7 +447,7 @@ pub struct NodeInstance {
 
 impl NodeInstance {
     #[cfg(test)]
-    pub(crate) fn new<R>(rng: &mut R, from: Pubkey, now: u64) -> Self
+    pub fn new<R>(rng: &mut R, from: Pubkey, now: u64) -> Self
     where
         R: Rng + rand::CryptoRng,
     {
@@ -461,14 +461,14 @@ impl NodeInstance {
 
     #[cfg(test)]
     // Clones the value with an updated wallclock.
-    pub(crate) fn with_wallclock(&self, wallclock: u64) -> Self {
+    pub fn with_wallclock(&self, wallclock: u64) -> Self {
         Self { wallclock, ..*self }
     }
 
     // Returns None if tokens are the same or other is not a node-instance from
     // the same owner. Otherwise returns true if self has more recent timestamp
     // than other, and so overrides it.
-    pub(crate) fn overrides(&self, other: &NodeInstance) -> Option<bool> {
+    pub fn overrides(&self, other: &NodeInstance) -> Option<bool> {
         if self.token == other.token || self.from != other.from {
             return None;
         }
