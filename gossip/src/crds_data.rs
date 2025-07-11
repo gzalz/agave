@@ -423,9 +423,9 @@ impl Sanitize for LegacyVersion {
 #[cfg_attr(feature = "frozen-abi", derive(AbiExample))]
 #[derive(Serialize, Deserialize, Clone, Debug, PartialEq, Eq)]
 pub struct Version {
-    from: Pubkey,
+    pub from: Pubkey,
     pub wallclock: u64,
-    version: solana_version::LegacyVersion2,
+    pub version: solana_version::LegacyVersion2,
 }
 
 impl Sanitize for Version {
