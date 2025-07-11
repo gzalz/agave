@@ -12,7 +12,7 @@ use {
 #[cfg_attr(feature = "frozen-abi", derive(AbiExample))]
 #[derive(Clone, Debug, Eq, PartialEq, Deserialize, Serialize)]
 pub struct LegacyContactInfo {
-    id: Pubkey,
+    pub id: Pubkey,
     /// gossip address
     gossip: SocketAddr,
     /// address to connect to for replication
