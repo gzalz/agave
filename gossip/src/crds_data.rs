@@ -446,7 +446,6 @@ pub struct NodeInstance {
 }
 
 impl NodeInstance {
-    #[cfg(test)]
     pub fn new<R>(rng: &mut R, from: Pubkey, now: u64) -> Self
     where
         R: Rng + rand::CryptoRng,
@@ -459,7 +458,6 @@ impl NodeInstance {
         }
     }
 
-    #[cfg(test)]
     // Clones the value with an updated wallclock.
     pub fn with_wallclock(&self, wallclock: u64) -> Self {
         Self { wallclock, ..*self }

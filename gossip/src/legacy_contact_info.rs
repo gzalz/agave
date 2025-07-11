@@ -109,21 +109,21 @@ impl Default for LegacyContactInfo {
 
 impl LegacyContactInfo {
     #[inline]
-    pub(crate) fn pubkey(&self) -> &Pubkey {
+    pub fn pubkey(&self) -> &Pubkey {
         &self.id
     }
 
     #[inline]
-    pub(crate) fn wallclock(&self) -> u64 {
+    pub fn wallclock(&self) -> u64 {
         self.wallclock
     }
 
     #[inline]
-    pub(crate) fn shred_version(&self) -> u16 {
+    pub fn shred_version(&self) -> u16 {
         self.shred_version
     }
 
-    pub(crate) fn gossip(&self) -> Option<SocketAddr> {
+    pub fn gossip(&self) -> Option<SocketAddr> {
         let socket = self.gossip;
         crate::contact_info::sanitize_socket(&socket).ok()?;
         Some(socket)
@@ -147,7 +147,7 @@ impl LegacyContactInfo {
     /// ip must be specified and not multicast
     /// loopback ip is only allowed in tests
     // TODO: Replace this entirely with streamer SocketAddrSpace.
-    pub(crate) fn is_valid_address(addr: &SocketAddr, socket_addr_space: &SocketAddrSpace) -> bool {
+    pub fn is_valid_address(addr: &SocketAddr, socket_addr_space: &SocketAddrSpace) -> bool {
         addr.port() != 0u16 && Self::is_valid_ip(addr.ip()) && socket_addr_space.check(addr)
     }
 }
