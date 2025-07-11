@@ -22,7 +22,7 @@ mod epoch_specs;
 pub mod gossip_error;
 pub mod gossip_service;
 #[macro_use]
-mod legacy_contact_info;
+pub mod legacy_contact_info;
 pub mod ping_pong;
 mod protocol;
 mod push_active_set;
