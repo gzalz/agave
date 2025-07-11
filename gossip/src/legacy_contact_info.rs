@@ -119,6 +119,11 @@ impl LegacyContactInfo {
     }
 
     #[inline]
+    pub fn set_wallclock(&mut self, value: u64) {
+        self.wallclock = value;
+    }
+
+    #[inline]
     pub fn shred_version(&self) -> u16 {
         self.shred_version
     }
