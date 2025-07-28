@@ -342,12 +342,12 @@ impl Crds {
     }
 
     /// Returns all entries which are ContactInfo.
-    pub(crate) fn get_nodes(&self) -> impl Iterator<Item = &VersionedCrdsValue> {
+    pub fn get_nodes(&self) -> impl Iterator<Item = &VersionedCrdsValue> {
         self.nodes.iter().map(move |i| self.table.index(*i))
     }
 
     /// Returns ContactInfo of all known nodes.
-    pub(crate) fn get_nodes_contact_info(&self) -> impl Iterator<Item = &ContactInfo> {
+    pub fn get_nodes_contact_info(&self) -> impl Iterator<Item = &ContactInfo> {
         self.get_nodes().map(|v| match v.value.data() {
             CrdsData::ContactInfo(info) => info,
             _ => panic!("this should not happen!"),
@@ -408,7 +408,7 @@ impl Crds {
     }
 
     /// Returns all records associated with a pubkey.
-    pub(crate) fn get_records(&self, pubkey: &Pubkey) -> impl Iterator<Item = &VersionedCrdsValue> {
+    pub fn get_records(&self, pubkey: &Pubkey) -> impl Iterator<Item = &VersionedCrdsValue> {
         self.records
             .get(pubkey)
             .into_iter()
@@ -417,7 +417,7 @@ impl Crds {
     }
 
     /// Returns number of known contact-infos (network size).
-    pub(crate) fn num_nodes(&self) -> usize {
+    pub fn num_nodes(&self) -> usize {
         self.nodes.len()
     }
 
