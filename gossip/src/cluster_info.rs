@@ -16,6 +16,7 @@
 use {
     crate::{
         cluster_info_metrics::{Counter, GossipStats, ScopedTimer, TimedGuard},
+        contact_info::Protocol as ContactInfoProtocol,
         contact_info::{self, ContactInfo, ContactInfoQuery, Error as ContactInfoError},
         crds::{Crds, Cursor, GossipRoute},
         crds_data::{self, CrdsData, EpochSlotsIndex, LowestSlot, SnapshotHashes, Vote, MAX_VOTES},
@@ -392,6 +393,15 @@ impl ClusterInfo {
 
     pub fn set_tpu(&self, tpu_addr: SocketAddr) -> Result<(), ContactInfoError> {
         self.my_contact_info.write().unwrap().set_tpu(tpu_addr)?;
+        self.refresh_my_gossip_contact_info();
+        Ok(())
+    }
+
+    pub fn set_tvu(&self, tpu_addr: SocketAddr) -> Result<(), ContactInfoError> {
+        self.my_contact_info
+            .write()
+            .unwrap()
+            .set_tvu(ContactInfoProtocol::UDP, tpu_addr)?;
         self.refresh_my_gossip_contact_info();
         Ok(())
     }
