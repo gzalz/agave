@@ -406,6 +406,15 @@ impl ClusterInfo {
         Ok(())
     }
 
+    pub fn set_tvu_q(&self, tpu_addr: SocketAddr) -> Result<(), ContactInfoError> {
+        self.my_contact_info
+            .write()
+            .unwrap()
+            .set_tvu(ContactInfoProtocol::QUIC, tpu_addr)?;
+        self.refresh_my_gossip_contact_info();
+        Ok(())
+    }
+
     pub fn set_tpu_forwards(&self, tpu_forwards_addr: SocketAddr) -> Result<(), ContactInfoError> {
         self.my_contact_info
             .write()
